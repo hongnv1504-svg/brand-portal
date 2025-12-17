@@ -119,7 +119,7 @@ export default function Tabs({ colors, assets }: TabsProps) {
                 <input
                   type="file"
                   className="hidden"
-                  accept=".ai,.eps,.pdf,image/png,image/jpeg"
+                  accept=".jpg,.jpeg,.png,.svg,.webp,.ai,.eps,.pdf,.zip,.rar"
                   onChange={onUploadChange(assetList[0]?.brand_id || '')}
                 />
               </label>
