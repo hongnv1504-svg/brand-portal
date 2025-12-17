@@ -51,7 +51,7 @@ export default async function AdminDashboardPage({
             <h1 className="text-3xl font-medium tracking-tight text-[#111111]">Quản Lý Thương Hiệu Của Bạn</h1>
             <p className="mt-2 text-sm text-[#111111]/60">Xem và quản lý các thương hiệu bạn đã tạo</p>
           </div>
-          {brands.length > 0 && (
+          {brands && brands.length > 0 && (
             <Link
               href="/admin/add-brand"
               className="flex items-center gap-2 rounded-sm border border-[#e5e5e5] bg-white px-4 py-2 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111]/5"
@@ -66,7 +66,7 @@ export default async function AdminDashboardPage({
         {params.success === 'true' && <SuccessMessage />}
 
         {/* Brands Grid */}
-        {brands.length > 0 ? (
+        {brands && brands.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {brands.map((brand) => (
               <div
@@ -117,7 +117,9 @@ export default async function AdminDashboardPage({
               </div>
             ))}
           </div>
-        ) : (
+        ) : null}
+
+        {(!brands || brands.length === 0) && (
           <div className="flex flex-col items-center justify-center py-24">
             <div className="rounded-full border border-[#e5e5e5] bg-white p-6">
               <Plus className="h-8 w-8 text-[#111111]/30" />

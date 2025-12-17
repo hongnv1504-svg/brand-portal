@@ -44,7 +44,7 @@ export default async function DashboardPage({
               Manage brand assets for your clients
             </p>
           </div>
-          {brands.length > 0 && (
+          {brands && brands.length > 0 && (
             <Link
               href="/brand/new"
               className="flex items-center gap-2 rounded-sm border border-[#e5e5e5] bg-white px-4 py-2 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111]/5"
@@ -59,7 +59,7 @@ export default async function DashboardPage({
         {params.success === 'true' && <SuccessMessage />}
 
         {/* Brands Grid */}
-        {brands.length > 0 ? (
+        {brands && brands.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {brands.map((brand) => (
               <Link
@@ -88,7 +88,9 @@ export default async function DashboardPage({
               </Link>
             ))}
           </div>
-        ) : (
+        ) : null}
+
+        {(!brands || brands.length === 0) && (
           <div className="flex flex-col items-center justify-center py-24">
             <div className="rounded-full border border-[#e5e5e5] bg-white p-6">
               <Plus className="h-8 w-8 text-[#111111]/30" />
