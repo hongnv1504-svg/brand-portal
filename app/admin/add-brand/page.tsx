@@ -190,7 +190,6 @@ export default function AddBrandPage() {
                   type="file"
                   name="logo"
                   id="logo"
-                  accept="image/png,image/jpeg,image/svg+xml"
                   onChange={handleLogoChange}
                   className="hidden"
                   required={!logoPreview}

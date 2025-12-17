@@ -128,7 +128,7 @@ export default async function AdminBrandDetailPage({
           </div>
         </div>
 
-        <Tabs colors={colors} assets={assets} />
+        <Tabs brandId={brand.id} colors={colors} assets={assets} />
       </div>
     </div>
   );

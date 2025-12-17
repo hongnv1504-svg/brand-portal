@@ -199,7 +199,6 @@ export default function NewBrandPage() {
                   ref={fileInputRef}
                   type="file"
                   id="logo"
-                  accept="image/*"
                   onChange={handleLogoChange}
                   className="w-full rounded-sm border border-[#e5e5e5] bg-white px-4 py-2 text-sm text-[#111111] focus:border-[#111111] focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-medium file:bg-[#111111]/5 file:text-[#111111] hover:file:bg-[#111111]/10"
                 />

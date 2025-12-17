@@ -6,11 +6,12 @@ import { getAssetType } from '@/lib/utils';
 import { uploadAsset } from './actions';
 
 type TabsProps = {
+  brandId: string;
   colors: DatabaseBrandColor[];
   assets: DatabaseBrandAsset[];
 };
 
-export default function Tabs({ colors, assets }: TabsProps) {
+export default function Tabs({ brandId, colors, assets }: TabsProps) {
   const [activeTab, setActiveTab] = useState<'colors' | 'assets'>('assets');
   const [categoryFilter, setCategoryFilter] = useState<AssetCategory | 'All'>('All');
   const [assetList, setAssetList] = useState<DatabaseBrandAsset[]>(assets);
@@ -119,8 +120,7 @@ export default function Tabs({ colors, assets }: TabsProps) {
                 <input
                   type="file"
                   className="hidden"
-                  accept=".jpg, .jpeg, .png, .gif, .svg, .webp, .pdf, .ai, .eps, .zip, .rar"
-                  onChange={onUploadChange(assetList[0]?.brand_id || '')}
+                  onChange={onUploadChange(brandId)}
                 />
               </label>
             </div>
