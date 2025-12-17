@@ -51,13 +51,15 @@ export default async function AdminDashboardPage({
             <h1 className="text-3xl font-medium tracking-tight text-[#111111]">Quản Lý Thương Hiệu Của Bạn</h1>
             <p className="mt-2 text-sm text-[#111111]/60">Xem và quản lý các thương hiệu bạn đã tạo</p>
           </div>
-          <Link
-            href="/admin/add-brand"
-            className="flex items-center gap-2 rounded-sm border border-[#e5e5e5] bg-white px-4 py-2 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111]/5"
-          >
-            <Plus className="h-4 w-4" />
-            + Thêm Brand Mới
-          </Link>
+          {brands.length > 0 && (
+            <Link
+              href="/admin/add-brand"
+              className="flex items-center gap-2 rounded-sm border border-[#e5e5e5] bg-white px-4 py-2 text-sm font-medium text-[#111111] transition-colors hover:bg-[#111111]/5"
+            >
+              <Plus className="h-4 w-4" />
+              + Thêm Brand Mới
+            </Link>
+          )}
         </div>
 
         {/* Success Message */}

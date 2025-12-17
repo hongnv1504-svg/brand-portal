@@ -14,6 +14,7 @@ export async function createBrandAdmin(formData: FormData) {
   const name = formData.get('name') as string;
   const description = formData.get('description') as string;
   const logoFile = formData.get('logo') as File | null;
+  const colorsJson = formData.get('colors') as string | null;
 
   let logoUrl = '';
 
@@ -48,6 +49,16 @@ export async function createBrandAdmin(formData: FormData) {
     logoUrl = urlData.publicUrl;
   }
 
+  let colors: Array<{ id: string; name: string; hex: string }> = [];
+  try {
+    if (colorsJson) {
+      const parsed = JSON.parse(colorsJson);
+      colors = Array.isArray(parsed) ? parsed : [];
+    }
+  } catch {
+    colors = [];
+  }
+
   // Insert brand into database
   const { error } = await supabase
     .from('brands')
@@ -56,8 +67,7 @@ export async function createBrandAdmin(formData: FormData) {
       description: description, // Assuming this column exists
       logo_url: logoUrl,
       owner_id: user?.id, // Assuming this column exists
-      // Default empty values for fields required by existing schema but not in this form
-      colors: [], 
+      colors: colors, 
       fonts: [],
     })
     .select()
